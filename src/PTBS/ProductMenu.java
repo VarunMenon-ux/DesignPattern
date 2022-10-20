@@ -1,3 +1,10 @@
 package PTBS;
-public class ProductMenu {
+
+import javax.swing.*;
+
+abstract public class ProductMenu extends JDialog {
+    Product product;
+
+
+
 }
