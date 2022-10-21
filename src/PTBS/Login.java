@@ -22,13 +22,11 @@ public class Login extends JDialog{
     JButton buttonExit = new JButton();
     JTextField userNameText = new JTextField();
     JPasswordField passwordText = new JPasswordField();
-    JRadioButton studentRadio = new JRadioButton();
-    JRadioButton instructorRadio = new JRadioButton();
+    JRadioButton buyerRadio = new JRadioButton();
+    JRadioButton sellerRadio = new JRadioButton();
     ButtonGroup buttonGroup1 = new ButtonGroup();
 
-    // Attributes Added By me
     private String userBox = null;
-    ///private USER_TYPE userType = USER_TYPE.Student; // default to Student
 
     public Login() {
         try {
@@ -61,38 +59,39 @@ public class Login extends JDialog{
         });
         userNameText.setBounds(new Rectangle(119, 52, 144, 22));
         passwordText.setBounds(new Rectangle(118, 119, 147, 22));
-        studentRadio.setSelected(true);
-        studentRadio.setText("Student");
-        studentRadio.setBounds(new Rectangle(37, 164, 103, 26));
-        instructorRadio.setText("Instructor");
-        instructorRadio.setBounds(new Rectangle(177, 162, 103, 26));
+        buyerRadio.setSelected(true);
+        buyerRadio.setText("Buyer");
+        buyerRadio.setBounds(new Rectangle(37, 164, 103, 26));
+        sellerRadio.setText("Seller");
+        sellerRadio.setBounds(new Rectangle(177, 162, 103, 26));
         this.getContentPane().add(jLabel1, null);
         this.getContentPane().add(jLabel2, null);
         this.getContentPane().add(loginButton, null);
         this.getContentPane().add(buttonExit, null);
         this.getContentPane().add(userNameText, null);
         this.getContentPane().add(passwordText, null);
-        this.getContentPane().add(studentRadio, null);
-        this.getContentPane().add(instructorRadio, null);
-        buttonGroup1.add(studentRadio);
-        buttonGroup1.add(instructorRadio);
+        this.getContentPane().add(buyerRadio, null);
+        this.getContentPane().add(sellerRadio, null);
+        buttonGroup1.add(buyerRadio);
+        buttonGroup1.add(sellerRadio);
     }
 
     void loginButton_actionPerformed(ActionEvent e) {
         Scanner scanner;
+        UserInfoItem.USER_TYPE userType;
         mBExit = false;
         System.out.println("login clicked");
         try {
-            if (studentRadio.isSelected() == true)  // student
+            if (buyerRadio.isSelected() == true)
             {
-                userType = USER_TYPE.Student; // 0 for student
-                File file = new File("StuInfo.txt");
+                userType = UserInfoItem.USER_TYPE.Buyer;
+                File file = new File("buyInfo.txt");
                 scanner = new Scanner(file);
-                System.out.println("student selected");
+                System.out.println("buyer selected");
             } else// instructor
             {
-                userType = USER_TYPE.Instructor; // 1 for instructor
-                File file = new File("InsInfor.txt");
+                userType = UserInfoItem.USER_TYPE.Seller; // 1 for instructor
+                File file = new File("sellInfo.txt");
                 scanner = new Scanner(file);
             }
             userBox = userNameText.getText();
@@ -116,10 +115,6 @@ public class Login extends JDialog{
         }
 
     }
-
-    /*
-     * get the user name from aline UserName:Password
-     */
     private String GetUserName(String aline) {
         int Sep = aline.lastIndexOf(':');
         return aline.substring(0, Sep);
@@ -133,13 +128,12 @@ public class Login extends JDialog{
         return aline.substring(Sep + 1, aline.length());
     }
 
-    /* after login get the UserName of the login interface */
     public String GetUserName() {
         return userBox;
     }
 
-    /* after login get the userType of the login interface */
-    public USER_TYPE GetUserType() {
+    public UserInfoItem.USER_TYPE GetUserType() {
+        UserInfoItem.USER_TYPE userType;
         return userType;
     }
 
@@ -152,4 +146,4 @@ public class Login extends JDialog{
         setVisible(false);
     }
 }
-}
+

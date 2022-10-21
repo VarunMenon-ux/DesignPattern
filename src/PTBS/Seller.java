@@ -7,13 +7,13 @@ public class Seller extends Person {
         showRadioButton();
     }
 
-    public ProductMenu createProductMenu(int type, Product product){
-        if (type == 0){
+    public ProductMenu createProductMenu(int type, Product product) {
+        if (type == 0) {
             theProductMenu = new MeatProductMenu();
-        }
-        else{
+        } else {
             theProductMenu = new ProduceProductMenu();
         }
         return theProductMenu;
+    }
 
 }

@@ -43,12 +43,12 @@ abstract public class Person {
     }
 
     public boolean showMenu(){
-        Iterator<Trading> iter = product.tradinglist.iterator();
+        Iterator<Trading> iter = currentProduct.tradinglist.iterator();
         theProductMenu.product = currentProduct;
         Trading trading;
         while (iter.hasNext()){
             trading = (Trading) iter.next();
-            theProductMenu.
+            theProductMenu.addItem(trading);
         }
         return false;
     }
@@ -58,4 +58,6 @@ abstract public class Person {
     }
 
 
+    public void addProduct(Product theSelectedProduct) {
+    }
 }

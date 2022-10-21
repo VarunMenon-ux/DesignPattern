@@ -5,22 +5,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClassProductList extends ArrayList<Product> {
-    void getFromDB(String filename){
+    Product getFromDB(String filename){
         Scanner read;
-        String strProductName = null;
-        File list = new File(filename);
-        read = new Scanner(list);
-        while(read.hasNextLine()){
-            strFilename = read.nextLine();
-            Product product;
-            product = new Product(strFilename, 0);
-            add(product);
-
-        }
-        read.close();
+        try{
+            String strProductName = null;
+            File list = new File(filename);
+            read = new Scanner(list);
+            while(read.hasNextLine()) {
+                strProductName = read.nextLine();
+                Product product;
+                product = new Product(strProductName, 0);
+                add(product);
+            }
+            read.close();
+        } catch (Exception xy){
     }
 
-    Product FindProductByName(String Prod){
+    Product FindProductByName(String ProuctName){
         int nProductCount = size();
         for(int i = 0; i<nProductCount; i++){
             Product product;

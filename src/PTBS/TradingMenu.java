@@ -1,3 +1,4 @@
 package PTBS;
-public class TradingMenu {
+abstract public class TradingMenu {
+
 }

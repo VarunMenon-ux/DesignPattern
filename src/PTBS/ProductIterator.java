@@ -8,22 +8,14 @@ public class ProductIterator implements Iterator<Product> {
 
     public ProductIterator(ClassProductList productlist) {
     }
-
-    /**
-     *
-     */
     public boolean hasNext() {
         if (currentNum >= productlist.size()-1)
             return false;
         else
             return true;
     }
-
-    /**
-     *
-     */
     public Product next() {
-        if(hasNext() == true){
+        if(hasNext()){
             currentNum+=1;
             return productlist.get(currentNum);
         }
@@ -37,18 +29,14 @@ public class ProductIterator implements Iterator<Product> {
             currentNum += 1;
         productlist.remove(currentNum);
     }
-
-    /**
-     *
-     */
     public void MoveToHead() {
 
     }
-
-    /**
-     *
-     */
     public void Remove() {
 
+    }
+
+    public Product next(String strProdName) {
+        return null;
     }
 }

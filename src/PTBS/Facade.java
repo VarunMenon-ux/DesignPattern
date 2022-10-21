@@ -1,6 +1,9 @@
 package PTBS;
 import PTBS.UserInfoItem;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class Facade {
 
     private int UserType;
@@ -13,7 +16,7 @@ public class Facade {
 
     private Person thePerson;
 
-    private tradingMenu tradingmenu;
+    private TradingMenu tradingmenu;
 
     public boolean login(UserInfoItem userinfoitem) {
 
@@ -26,8 +29,8 @@ public class Facade {
         return user.isExit();
     }
 
-    public void addTrading(Trade trade) {
-        tradingMenu tradingmenu; //////try making this private var
+    public void addTrading(Trading trading) {
+        TradingMenu tradingmenu; //////try making this private var
         if (thePerson.type == 0) {
             tradingmenu = new BuyerTradingMenu();
         }
@@ -81,8 +84,7 @@ public class Facade {
      *
      */
     public void remind() {
-        RemindBox remindbox = new RemindBox();
-        remindbox.showRemindBox(thePerson.GetProductList());
+        Reminder remindbox = new Reminder();
     }
 
 
@@ -109,11 +111,11 @@ public class Facade {
      *
      */
     public void AttachProductToUser() {
-        List list;
-        Read read;
+        File list;
+        Scanner read;
 
-        prodlist = new ProdList("UserProduct.txt");
-        read = new Read(list);
+        theProductList = new ClassProductList("UserProduct.txt");
+        read = new Scanner(list);
         String strUserName;
         String strProductName;
         String user;

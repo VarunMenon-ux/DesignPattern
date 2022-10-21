@@ -1,3 +1,4 @@
 package PTBS;
-public class OfferingMenu {
+abstract public class OfferingMenu {
+
 }

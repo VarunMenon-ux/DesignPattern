@@ -1,8 +1,10 @@
 package PTBS;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Product {
+    public Product ProductName;
     String productName;
     int prodNum;
     int prodType;
